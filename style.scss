@@ -1,0 +1,390 @@
+// Reusebles
+$borderRound: 50%;
+$standardMargin:10px;
+$colorMainDark:rgb(39, 36, 36);
+$colorMainLight:whitesmoke;
+$colorMainLightSee:rgba(245, 245, 245, 0.212);
+@mixin resize {
+    @media screen and (min-width: 600px) {
+        @content
+    }
+}
+
+@mixin resize2 {
+    @media screen and (min-width: 400px) {
+        @content
+    }
+}
+
+@mixin resize4 {
+    @media screen and (max-width: 1100px) {
+        @content
+    }
+}
+
+@mixin resize3 {
+    @media screen and (min-width: 1100px) {
+        @content
+    }
+}
+
+//mainSettings
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: $colorMainLight;
+    background: $colorMainDark;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.MainContainer {
+    display: flex;
+    justify-content: center;
+    .nav {
+        display: flex;
+        position: relative;
+        justify-content: flex-start;
+        right: 1%;
+        width: 5%;
+        .navContainer {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            .containerFor2 {
+                margin-top: 10px;
+                width: fit-content;
+                display: flex;
+                padding: 10px;
+                height: 40px;
+                justify-content: center;
+                align-items: center;
+                h3 {
+                    display: none;
+                    justify-content: flex-end;
+                    align-items: flex-end;
+                }
+            }
+            @supports (-ms-ime-align:auto) {
+                .containerFor2 {
+                    justify-content: flex-start;
+                }
+                @include resize4 {
+                    .containerFor2 {
+                        justify-content: center;
+                    }
+                }
+            }
+            .containerFor2:hover {
+                background: $colorMainLightSee;
+                border-radius: 30px;
+            }
+            .hideH {
+                display: none;
+                .fa-hashtag {
+                    display: none;
+                }
+            }
+            @include resize3 {
+                .hideS {
+                    display: none;
+                    .fa-search {
+                        display: none;
+                    }
+                }
+                .hideH {
+                    display: flex;
+                    .fa-hashtag {
+                        display: flex;
+                    }
+                }
+                .containerFor2 {
+                    h3 {
+                        display: flex;
+                    }
+                }
+            }
+            @include resize4 {
+                .containerFor2 {
+                    width: 45px;
+                    height: 45px;
+                }
+                .containerFor2:hover {
+                    border-radius: $borderRound;
+                }
+            }
+            a {
+                color: $colorMainLight;
+                text-decoration: none;
+                i {
+                    width: 40px;
+                    font-size: 25px;
+                    color: $colorMainLight;
+                    margin-right: 10px;
+                }
+                .fa-twitter {
+                    border-radius: $borderRound;
+                    height: 45px;
+                    width: 45px;
+                    margin-left: 2px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                @supports (-ms-ime-align:auto) {
+                    .fa-twitter {
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+                @include resize4 {
+                    i {
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .logoContainer {
+                width: fit-content;
+                .fa-twitter:hover {
+                    background: $colorMainLightSee;
+                }
+            }
+        }
+    }
+    @include resize3 {
+        .nav {
+            right: 170px;
+        }
+    }
+    .borderBottom {
+        border-bottom: .1px solid $colorMainLight;
+    }
+    .header {
+        button {
+            background: $colorMainLight;
+            border: none;
+            padding: 5px;
+            font-weight: bold;
+            margin: 5px;
+            transition: 0.3s ease-in-out;
+        }
+        button:hover {
+            transition: 0.3s ease-in-out;
+            background: $colorMainLightSee;
+            color: $colorMainLight;
+        }
+        h3 {
+            display: none;
+        }
+        h4 {
+            display: none;
+        }
+        h1 {
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        height: 50px;
+        width:80%;
+        background: $colorMainDark;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        border-bottom: 0.3px solid $colorMainLight;
+    }
+    @include resize {
+        .header {
+            width: 500px;
+        }
+    }
+    .header::before {
+        content: ' ';
+        position: fixed;
+        border-right: 0.3px solid $colorMainLight;
+        height: 1999px;
+        width: 1px;
+        margin-left: 100%;
+        position: absolute;
+        z-index: 99;
+    }
+    .posts-zone {
+        margin-left: 30px;
+        width: 80%;
+    }
+    @include resize {
+        .posts-zone {
+            width: 500px;
+        }
+    }
+    .posts-zone::before {
+        content: ' ';
+        position: fixed;
+        border-left: 0.3px solid $colorMainLight;
+        height: 100%;
+        z-index: 99;
+        width: 1px;
+    }
+    .postsControl {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column-reverse;
+        max-width: 100%;
+        .posts {
+            display: flex;
+            justify-content: space-evenly;
+            .profilePickDisplay {
+                width: 40px;
+                height: 40px;
+                padding: 8%;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            @include resize2 {
+                .profilePickDisplay {
+                    width: 40px;
+                    height: 40px;
+                    padding: 25px;
+                }
+            }
+        }
+    }
+    .register {
+        margin-left: 4%;
+        margin-top: 50px;
+        button {
+            background: $colorMainLight;
+            padding: 5px;
+            border-style: none;
+            border-radius: 5px;
+        }
+    }
+    #myForm {
+        position: relative;
+        z-index: 99;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-left: 35px;
+        margin-right: 50px;
+        text-align: center;
+        input {
+            width: 100%;
+            padding: 5px;
+            border-style: none;
+            border-radius: 10px;
+            background: $colorMainLight;
+        }
+        label {
+            margin-top: 10px;
+            color: $colorMainLight;
+        }
+        .name {
+            width: 100%;
+            justify-content: space-evenly;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @supports (-ms-ime-align: auto) {
+                width: 90%;
+                justify-content: space-between;
+            }
+            .stName {
+                display: flex;
+                flex-direction: column;
+            }
+            .ndName {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .user_email {
+            width: 100%;
+            justify-content: space-evenly;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @supports (-ms-ime-align: auto) {
+                width: 90%;
+                justify-content: space-between;
+            }
+            #email {
+                height: inherit;
+            }
+            .username {
+                display: flex;
+                flex-direction: column;
+            }
+            .email {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .passwordInput {
+            width: 100%;
+            justify-content: space-evenly;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @supports (-ms-ime-align: auto) {
+                width: 90%;
+                justify-content: space-between;
+            }
+            .password {
+                display: flex;
+                flex-direction: column;
+            }
+            .repeatPass {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .errorPass {
+            text-align: center;
+            width: 200px;
+        }
+        .submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            #submit {
+                padding: 5px 10px;
+                background: $colorMainLight;
+                border-style: none;
+            }
+        }
+    }
+    @supports (-ms-ime-align:auto) {
+        #myForm {
+            position: relative;
+            z-index: 99;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 35px;
+            margin-right: 50px;
+            text-align: center;
+        }
+    }
+    @include resize {
+        #myForm {
+            width: 400px;
+            .name {
+                flex-direction: row;
+            }
+            .user_email {
+                flex-direction: row;
+            }
+            .passwordInput {
+                flex-direction: row;
+            }
+        }
+    }
+}
