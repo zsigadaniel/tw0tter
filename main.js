@@ -57,37 +57,28 @@ async function list() {
     let timeOfPost = document.querySelectorAll('.timeOfPost');
     let postContainer = document.querySelectorAll('.postsContainer');
     // Function that places the data inside the DOM
-    function thePosts(hold1, hold2) {
-        return new Promise((resolve, reject) => {
-            let array = [];
-            let counter = -1;
-            let counter1 = -1;
-            let myTimer = setInterval(() => {
-                counter++;
-                counter1++;
-                array.push(hold1[counter]);
-                hold2[counter1].innerHTML = array[counter1];
-                postContainer[counter1].classList.add('borderBottom');
-                posts[counter1].style.margin = '10px';
-                if (hold1 == profilePick && hold2 == pic) {
-                    hold2[counter1].classList.add('profilePickDisplay')
-                    hold2[counter1].style.background = `url('${array[counter1]}')`
-                    hold2[counter1].style.backgroundPosition = "center";
-                    hold2[counter1].style.backgroundSize = "cover";
-                    hold2[counter1].innerHTML = '';
-                }
-                if (counter >= postCont.length - 1) {
-                    clearInterval(myTimer);
-                }
-                let error = false;
-                if (!error) {
-                    resolve()
-                } else {
-                    reject()
-                }
-
-            }, 2000);
-        })
+ function thePosts(hold1, hold2) {
+        let array = [];
+        let counter = -1;
+        let counter1 = -1;
+        let myTimer = setInterval(() => {
+            counter++;
+            counter1++;
+            array.push(hold1[counter]);
+            hold2[counter1].innerHTML = array[counter1];
+            postContainer[counter1].classList.add('borderBottom');
+            posts[counter1].style.margin = '10px';
+            if (hold1 == profilePick && hold2 == pic) {
+                hold2[counter1].classList.add('profilePickDisplay')
+                hold2[counter1].style.background = `url('${array[counter1]}')`
+                hold2[counter1].style.backgroundPosition = "center";
+                hold2[counter1].style.backgroundSize = "cover";
+                hold2[counter1].innerHTML = '';
+            }
+            if (counter >= postCont.length - 1) {
+                clearInterval(myTimer);
+            }
+        }, 2000);
 
     }
     thePosts(postCont, post);
