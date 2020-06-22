@@ -158,38 +158,3 @@ button.addEventListener('click', () => {
     list();
     controler = false;
 })
-
-
-
-
-
-
-// function summing(value) {
-//     let number = [];
-//     for (let i = 0; i < value.length; i++) {
-//         number.push(parseInt(value[i]))
-//     }
-
-//     function adder(total, num) {
-//         return total + num;
-//     }
-
-//     let number2 = number.reduce(adder)
-//     return number2;
-// }
-
-
-// let result = summing('252525');
-
-
-// function checker(result) {
-//     if (result > 10) {
-//         let chk = summing(result.toString())
-//         console.log(chk);
-//         if (chk > 10) {
-//             console.log(summing(chk.toString()));
-//         }
-//     }
-// };
-// console.log(result);
-// checker(result);
